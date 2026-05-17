@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+
+<h2 class="cart-title">🛒 Your Cart</h2>
+
+<div class="cart-container">
+
+{% if cart %}
+    {% for key, item in cart.items %}
+        <div class="cart-card">
+
+            <div class="cart-left">
+                <img src="{{ item.image }}" alt="product">
+
+                <div class="cart-info">
+                    <h3>{{ item.name }}</h3>
+                    <p class="price">₹ {{ item.price }}</p>
+                    <p class="qty">Qty: {{ item.qty|default:1 }}</p>
+                </div>
+            </div>
+
+            <div class="cart-actions">
+
+                <div class="qty-box">
+                    <form method="POST" action="{% url 'update_cart' key %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="decrease">
+                        <button type="submit">−</button>
+                    </form>
+
+                    <span>{{ item.qty|default:1 }}</span>
+
+                    <form method="POST" action="{% url 'update_cart' key %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="increase">
+                        <button type="submit">+</button>
+                    </form>
+                </div>
+
+                <a class="remove-btn" href="{% url 'remove_from_cart' key %}">Remove</a>
+
+            </div>
+
+        </div>
+    {% endfor %}
+
+    <!-- TOTAL -->
+    <div class="total-box">
+        <span>Total:</span>
+        <strong>₹ {{ total }}</strong>
+    </div>
+
+    <!-- PAYMENT BUTTON -->
+    <div style="text-align:center; margin-top:20px;">
+        <!-- <a href="{% url 'payment' %}" class="pay-btn">💳 Proceed to Payment</a> -->
+        <!-- <a href="{% url 'payment' %}" class="btn btn-success">💳Proceed to Payment</a> -->
+         <a href="{% url 'stripe_checkout' %}" class="btn btn-primary">Pay with Stripe</a>
+    </div>
+
+{% else %}
+    <p class="empty-cart">Your cart is empty</p>
+{% endif %}
+
+</div>
+
+<div class="product-buttons">
+    <a href="/" class="btn-back">← Continue Shopping</a>
+</div>
+
+</body>
+</html>

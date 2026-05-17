@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Orders</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #eef2f3, #ffffff);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .order-card {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .order-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .order-header p {
+            color: #444;
+            font-size: 14px;
+        }
+
+        .order-header b {
+            color: #000;
+        }
+
+        .items {
+            margin-top: 10px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .empty p {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            background: #6772e5;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #5469d4;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+            .order-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .item {
+                flex-direction: column;
+                gap: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>📦 Your Orders</h2>
+
+    {% if orders %}
+        {% for order in orders %}
+        <div class="order-card">
+
+            <div class="order-header">
+                <p><b>Order ID:</b> {{ order.order_id }}</p>
+                <p><b>Total:</b> ₹{{ order.total_amount }}</p>
+            </div>
+
+            <div class="items">
+                <h4>Items:</h4>
+
+                {% for item in order.items.all %}
+                    <div class="item">
+                        <span>{{ item.product_name }}</span>
+                        <span>₹{{ item.price }} × {{ item.quantity }}</span>
+                    </div>
+                {% empty %}
+                    <div class="item">No items found ❌</div>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty">
+            <p>No orders yet 😢</p>
+            <a href="/" class="btn">Start Shopping</a>
+        </div>
+    {% endif %}
+
+    <div class="footer">
+        <a href="/">🏠 Go Home</a>
+    </div>
+
+</div>
+
+</body>
+</html>

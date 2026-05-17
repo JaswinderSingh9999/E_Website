@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+</head>
+<body>
+    <div class="product-container">
+    
+    <div class="product-card">
+
+        <!-- Image -->
+        <div class="product-image">
+            <img src="{{ product.pr_url_image.url }}" alt="">
+        </div>
+
+        <!-- Details -->
+        <div class="product-details">
+
+            <h2 class="product-title">
+                {{ product.pr_name }}
+            </h2>
+
+            <p class="product-description">
+                
+                {{ product.pr_details }}
+            </p>
+
+            <div class="product-price">
+                ₹ {{ product.pr_price }}
+            </div>
+
+            <div class="product-buttons">
+                <a href="/" class="btn-back">Back</a>
+                <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-cart">Add to Cart</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

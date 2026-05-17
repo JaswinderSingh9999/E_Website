@@ -1,0 +1,390 @@
+/* ================= GLOBAL ================= */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    scroll-behavior: smooth;
+    margin-top:70px;
+    
+    padding-top:0;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto 60px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background: #ffffff;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e7eb;
+    transition: 0.3s;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 22px;
+    color: #fff !important;
+}
+
+.nav-link {
+    color: #475569 !important;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #2563eb !important;
+}
+
+/* ================= HERO ================= */
+.hero {
+    background: linear-gradient(to right, #eef2ff, #f8fafc);
+    padding: 160px 0 120px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin: 20px 0 30px;
+}
+
+.btn-primary-custom {
+    background: #2563eb;
+    color: #fff;
+    padding: 14px 35px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ================= SERVICES ================= */
+.services {
+    background: #ffffff;
+}
+
+.service-card {
+    background: #f8fafc;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+/* ================= WHY US ================= */
+.why-box {
+    background: #f1f5f9;
+    padding: 25px;
+    border-left: 4px solid #2563eb;
+    margin-bottom: 20px;
+}
+
+/* ================= CTA ================= */
+.cta {
+    background: #2563eb;
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 0;
+}
+
+.cta h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* ================= CONTACT ================= */
+.contact {
+    background: #ffffff;
+}
+
+.form-control {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: none;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 50px 0;
+}
+
+footer a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+/* ================= FIXED NAVBAR OFFSET ================= */
+html {
+    scroll-padding-top: 90px; /* prevents section hiding under fixed navbar */
+}
+
+/* Make navbar fixed */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+/* Section reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Button animation */
+.btn-primary-custom {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary-custom::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    top: 0;
+    left: -100%;
+    transition: 0.4s;
+}
+
+.btn-primary-custom:hover::after {
+    left: 100%;
+}
+
+/* Active underline effect */
+.nav-link {
+    position: relative;
+    color: #fff !important;
+}
+
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2563eb;
+    transition: 0.3s;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+    width: 100%;
+}
+/* message style */
+
+.message{
+font-size:18px;
+font-weight:600;
+margin-bottom:15px;
+}
+
+.message.success{
+color:rgb(161, 219, 161);
+}
+
+.message.error{
+color:red;
+}
+
+.testimonalImg{
+width:50px;
+height:50px;
+border-radius:50%;
+object-fit:cover;
+}
+footer a:hover{
+color:#0d6efd;
+}
+
+footer i{
+cursor:pointer;
+font-size:20px;
+}
+
+.select2-container--default .select2-selection--single {
+height: 38px;
+padding-top: 4px;
+}
+
+.register-card{
+border-radius:15px;
+padding:10px;
+}
+
+/* floating input focus */
+
+.form-control:focus{
+box-shadow:none;
+border-color:#212529;
+}
+
+/* password box */
+
+.password-box{
+position:relative;
+}
+
+.toggle-password{
+position:absolute;
+right:15px;
+top:18px;
+cursor:pointer;
+font-size:18px;
+color:#777;
+}
+
+/* strength bar */
+
+.strength-bar{
+height:6px;
+background:#eee;
+border-radius:5px;
+overflow:hidden;
+}
+
+#passwordStrength{
+height:100%;
+width:0%;
+transition:0.3s;
+}
+
+/* button */
+
+.register-btn{
+background:linear-gradient(135deg,#212529,#000);
+color:white;
+padding:12px;
+border-radius:10px;
+font-weight:600;
+transition:0.3s;
+}
+
+.register-btn:hover{
+transform:translateY(-2px);
+}
+
+/* select2 */
+
+.country-dropdown + .select2-container .select2-selection--single{
+height:45px;
+width: 370px;
+border-radius:15px;
+padding:8px;
+}
+
+.password-box{
+position:relative;
+}
+
+.toggle-password{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size:18px;
+color:#777;
+}
+
+.email-input {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/561/561127.png'); /* envelope icon */
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  padding-left: 40px; /* space for icon */
+}
+.card-body a,
+.card-body a:hover {
+    text-decoration: none !important;
+}
+
+.testimonalImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonials-section .card {
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.testimonials-section .card:hover {
+    transform: translateY(-5px);
+}
+
+input.error-border, textarea.error-border {
+  border: 1px solid red;
+}
+

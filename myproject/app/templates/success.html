@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 60px;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-orders {
+            background: #6772e5;
+            color: white;
+        }
+
+        .btn-orders:hover {
+            background: #5469d4;
+        }
+
+        .btn-home {
+            background: #f1f1f1;
+            color: #333;
+        }
+
+        .btn-home:hover {
+            background: #ddd;
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .success-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-card">
+
+    <div class="icon">✅</div>
+
+    <h2>Payment Successful!</h2>
+    <p>Your order has been placed successfully.</p>
+
+    <a href="{% url 'orders' %}" class="btn btn-orders">
+        📦 View Orders
+    </a>
+
+    <a href="/" class="btn btn-home">
+        🏠 Go Home
+    </a>
+
+</div>
+
+</body>
+</html>
